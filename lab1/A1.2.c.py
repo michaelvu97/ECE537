@@ -19,14 +19,22 @@ def probably():
 
 N = 1000000
 
-pmf_sampled = [[0 for i in range(6)] for j in range(6)]
+pmf = {}
 
 for i in range(N):
     X = probably()
     Y = probably()
-    pmf_sampled[X - 1][Y - 1] += 1
 
-print pmf_sampled
+    Z1 = X + Y
+    Z2 = X - Y
+    key = (Z1, Z2)
 
-plot.imshow(pmf_sampled)
-plot.show()
+    if not (key in pmf):
+        pmf[key] = 0
+
+    pmf[key] += 1
+
+print pmf
+
+# plot.imshow(pmf_sampled)
+# plot.show()
