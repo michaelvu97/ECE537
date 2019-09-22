@@ -34,7 +34,4 @@ for i in range(N):
 
     pmf[key] += 1
 
-print pmf
-
-# plot.imshow(pmf_sampled)
-# plot.show()
+print(pmf)
