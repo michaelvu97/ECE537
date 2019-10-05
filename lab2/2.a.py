@@ -16,4 +16,6 @@ for n in range(1, N + 1):
     vals.append(sample(n) / n)
 
 plot.plot(vals)
+plot.xlabel("n")
+plot.ylabel('Sn / n')
 plot.show()

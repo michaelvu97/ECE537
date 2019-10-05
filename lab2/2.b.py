@@ -36,4 +36,8 @@ ax1.hist(samples, bins=20)
 
 ax2 = ax1.twinx()
 ax2.plot(gaussian_x, gaussian_y, color='red')
+
+ax1.set_xlabel('Z_100')
+ax1.set_ylabel('Count')
+ax2.set_ylabel('Unit Gaussian PDF')
 plot.show()

@@ -17,4 +17,6 @@ for i in range(N):
     samples_X.append(X)
     samples_Y.append(Y)
 plot.hist(samples_X)
+plot.xlabel('X1')
+plot.ylabel('Count')
 plot.show()

@@ -17,4 +17,7 @@ for rho in [-1, -0.5, 0, 0.5, 1]:
         samples_X.append(X)
         samples_Y.append(Y)
     plot.plot(samples_X, samples_Y, 'o')
+    plot.ylabel('X2')
+    plot.xlabel('X1')
+    plot.title('rho=' + str(rho))
     plot.show()
