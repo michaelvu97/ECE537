@@ -20,3 +20,9 @@ plot.hist(samples_X)
 plot.xlabel('X1')
 plot.ylabel('Count')
 plot.show()
+
+mean = sum(samples_X)/len(samples_X)
+var = sum((float(x) - mean)**2 for x in samples_X) / len(samples_X)
+
+print("mean: " + str(mean))
+print("\nvar: " + str(var))

@@ -41,3 +41,9 @@ ax1.set_xlabel('Z_100')
 ax1.set_ylabel('Count')
 ax2.set_ylabel('Unit Gaussian PDF')
 plot.show()
+
+samples_mean = sum(samples)/len(samples)
+samples_variance = sum((x - samples_mean) **2 for x in samples) / len(samples)
+
+print ("mean: " + str(samples_mean))
+print ("var: " + str(samples_variance))
