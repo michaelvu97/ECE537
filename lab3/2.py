@@ -14,14 +14,6 @@ def PoissonPmf(rate, t, limit):
 
     return result
 
-"""
-FX(x)=1-exp(-rate * x)
-x=1-exp(-rate * y)
-(1-x)=exp(-rate * y)
-ln(1-x)=-rate * y
-FX(x) = -ln(1-u)/rate
-"""
-
 def N(t, rate, sample_limit):
     count = 0
     i = 1
@@ -50,8 +42,16 @@ plot.show()
 
 samples_b = [N(t, rate, limit)[0] for n in range(1000)]
 
+expected_value_N = sum(samples_b)/1000.0
+print("Expected value of N(t) for t = 5, rate = 2: " + str(expected_value_N))
+
+variance_value_N = sum([(x - expected_value_N) ** 2 for x in samples_b]) / 1000.0
+print("Variance value of N(t) for t = 5, rate = 2: " + str(variance_value_N))
+
+theoretical = t * rate
+
+print("The theoretical expected value is " + str(theoretical))
 poisson_pmf = PoissonPmf(rate, t, 20)
-print(poisson_pmf)
 
 fig,ax1 = plot.subplots()
 ax1.hist(samples_b)
@@ -59,8 +59,5 @@ ax1.hist(samples_b)
 ax2 = ax1.twinx()
 ax2.plot(poisson_pmf, color='red')
 
-# ax1.set_xlabel('Z_100')
-# ax1.set_ylabel('Count')
-# ax2.set_ylabel('Unit Gaussian PDF')
 plot.show()
 
