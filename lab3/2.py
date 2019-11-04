@@ -33,11 +33,18 @@ limit = 20
 
 samples_a = [N(t, rate, limit)[1] for n in range(5)]
 
-for sample in samples_a:
-    plot.plot(sample)
+# for sample in samples_a:
+#     plot.plot(sample)
 
+# plot.show()
+
+# Weird stuff for a
+for samples in samples_a:
+    plot.plot([len([s for s in samples if s < tau]) for tau in range (t + 1)])
+
+plot.ylabel("N(t)")
+plot.xlabel("t")
 plot.show()
-
 
 
 samples_b = [N(t, rate, limit)[0] for n in range(1000)]
@@ -55,9 +62,12 @@ poisson_pmf = PoissonPmf(rate, t, 20)
 
 fig,ax1 = plot.subplots()
 ax1.hist(samples_b)
+ax1.set_ylabel("# of N(t)")
 
 ax2 = ax1.twinx()
 ax2.plot(poisson_pmf, color='red')
+ax2.set_ylabel("P(N(t)=n")
 
+ax2.set_xlabel("N(t)")
 plot.show()
 
