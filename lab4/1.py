@@ -64,12 +64,8 @@ for x_trace in X_traces:
         avg_periodogram = x_periodogram
 
 plt.plot(f, avg_periodogram / 10.0)
-# w, h = scipy.signal.freqz(X_traces, N_traces) #????
-# plt.plot(w, np.square(np.abs(h)))
-plt.show()
-
-# THIS IS WRONG, THIS ISN'T THE TRANSFER FUNCTION
-
+w, h = scipy.signal.freqz(1, [1, -1.5, 0.8])
+plt.plot(w, np.square(np.abs(h)))
 plt.show()
 
 # Part D
