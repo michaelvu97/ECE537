@@ -30,7 +30,6 @@ axs[1].set_xlabel("t")
 plt.show()
 
 # Part B
-# This part doesn't make a whole lot of sense but
 autocorrelation_N = np.correlate(N, N, "same")
 autocorrelation_X = np.correlate(X, X, "same")
 
@@ -46,8 +45,9 @@ plt.show()
 
 # Part C
 N_traces = [GetN() for n in range(10)]
-X_traces = [GetX(n)[88:] for n in N_traces]
+X_traces = [GetX(n) for n in N_traces]
 N_traces = [n[88:] for n in N_traces]
+X_traces = [x[88:] for x in X_traces]
 
 def periodogram(signal):
     return scipy.signal.periodogram(signal, fs=2*math.pi)
@@ -64,8 +64,8 @@ for x_trace in X_traces:
         avg_periodogram = x_periodogram
 
 plt.plot(f, avg_periodogram / 10.0)
-w, h = scipy.signal.freqz(X_traces, N_traces) #????
-plt.plot(w, np.square(np.abs(h)))
+# w, h = scipy.signal.freqz(X_traces, N_traces) #????
+# plt.plot(w, np.square(np.abs(h)))
 plt.show()
 
 # THIS IS WRONG, THIS ISN'T THE TRANSFER FUNCTION
@@ -73,6 +73,6 @@ plt.show()
 plt.show()
 
 # Part D
-fft = np.abs(np.fft.fft(correlation(X, X, 0)))
-plt.plot(fft)
+fft = np.abs(np.fft.fft(autocorrelation_X))[:257]
+plt.plot(f, fft)
 plt.show()
